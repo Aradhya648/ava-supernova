@@ -15,8 +15,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          submodules: true
+
+      - name: Init submodules
+        run: git submodule update --init --recursive || echo "::warning::Some submodules unavailable — continuing"
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
@@ -82,8 +83,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          submodules: true
+
+      - name: Init submodules
+        run: git submodule update --init --recursive || echo "::warning::Some submodules unavailable — continuing"
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
@@ -112,8 +114,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          submodules: true
           fetch-depth: 0
+
+      - name: Init submodules
+        run: git submodule update --init --recursive || echo "::warning::Some submodules unavailable — continuing"
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
